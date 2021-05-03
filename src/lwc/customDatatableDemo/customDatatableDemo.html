@@ -1,0 +1,26 @@
+<template>
+    <lightning-card>
+        <div class="slds-var-p-around_small">
+            <lightning-record-edit-form object-api-name="Opportunity">
+                <span class="slds-form-element__label slds-text-title_bold">Select Account</span>
+                <lightning-input-field field-name="AccountId" variant="label-hidden" onchange={handleChange}>
+                </lightning-input-field>
+            </lightning-record-edit-form>
+            <div>
+                <span
+                    class="slds-form-element__label slds-text-title_bold slds-var-p-top_small slds-var-p-bottom_small">Related
+                    Opportunities</span>
+            </div>
+            <div style="max-height: 530px;" onitemregister={handleItemRegister}>
+                <c-custom-datatable class="slds-max-medium-table_stacked" onvaluechange={handleValueChange}
+                    oncellchange={handleCellChange} data={records} columns={columns} show-row-number-column="false"
+                    key-field="Id" draft-values={draftValues} onsave={handleSave} data-record="Id" onedit={handleEdit}
+                    hide-checkbox-column="true" oncancel={handleCancel}>
+                </c-custom-datatable>
+            </div>
+        </div>
+        <div class="showSpinner" if:true={showSpinner}>
+            <lightning-spinner alternative-text="Loading" variant="brand"></lightning-spinner>
+        </div>
+    </lightning-card>
+</template>
