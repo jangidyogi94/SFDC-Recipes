@@ -1,5 +1,5 @@
 public class OpportunityRelatedListController {
-	@AuraEnabled(cacheable=true)
+    @AuraEnabled(cacheable=true)
     public static List<Opportunity> getRelatedRecords() {
         return [SELECT Id, Name, Account.Name, AccountId, Amount, CloseDate, StageName FROM Opportunity LIMIT 10];
     }
